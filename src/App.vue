@@ -21,9 +21,10 @@ export default {
 
   /*HERE I CAN DEFINE MY GLOBAL VARIABLES WITH THERE INITIALIZATION*/
   data() {
+    const local =JSON.parse(localStorage.getItem("input"))
     return {
       inputData: null,
-      inputDataArr: []
+      inputDataArr: [...local],
     }
   },
 
@@ -33,6 +34,7 @@ export default {
     /**THIS METHOD ADD INPUTDATA TO MY ARR */
     onAddTextToList() {
       this.inputDataArr.push(this.inputData)
+      localStorage.setItem('input',JSON.stringify([...this.inputDataArr]))
     }
   },
   components: {
@@ -50,3 +52,4 @@ export default {
   margin-top: 60px;
 }
 </style>
+
